@@ -78,7 +78,7 @@ export default function LandingPage() {
       );
 
       console.log(res.data);
-      alert("Enrollment Done")
+      alert(res.data.msg)
     } catch (err) {
       console.error(err);
     }

@@ -206,8 +206,17 @@ app.post("/course/enrollment", async (req, res) => {
       role
     } = req.body;
 
-    // Make role case-insensitive
-   
+    //  Check if already enrolled
+    const existingEnrollment = await Studentenrollment.findOne({
+      studentid: studentid,
+      courseid: courseid
+    });
+
+    if (existingEnrollment) {
+      return res.json({ msg: "Already Enrolled in this course" });
+    }
+
+    // 🔥 2️⃣ If not enrolled, create new enrollment
     const student = new Studentenrollment({
       studentid,
       studentname,
@@ -226,9 +235,10 @@ app.post("/course/enrollment", async (req, res) => {
 
   } catch (error) {
     console.log(error);
-    return res.json(error);
+    return res.json({ error: error.message });
   }
 });
+
 
 
 

@@ -78,7 +78,7 @@ export default function UserProfile() {
 
             </li>
             <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
-              <Link to={`/${cookie.user.role.toLowerCase()}/dashboard`}>
+              <Link to={`/${cookie.user.role.toLowerCase()}`}>
 
                 Dashboard
               </Link>
